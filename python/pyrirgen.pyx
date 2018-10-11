@@ -1,5 +1,10 @@
 cimport cdefs
-from collections import abc
+try:
+    # Python 3
+    from collections.abc import Iterable
+except ImportError:
+    # Python 2.7
+    from collections import Iterable
 
 
 def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=None, betaCoeffs=None, float soundVelocity=340, float fs=16000, orientation=[.0, .0], bint isHighPassFilter=True, int nDim=3, int nOrder=-1, int nSamples=-1, micType='o'):
@@ -49,7 +54,7 @@ def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=N
 	if betaCoeffs is None:
 		betaCoeffs = [reverbTime]
 
-	if all(isinstance(e, abc.Iterable) for e in receiverPositions):
+	if all(isinstance(e, Iterable) for e in receiverPositions):
 		multipleMics = True
 	else:
 		multipleMics = False
