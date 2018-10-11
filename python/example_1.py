@@ -10,3 +10,4 @@ n = 2048                         # Number of samples
 
 h = pyrirgen.generateRir(L, s, r, soundVelocity=c, fs=fs, reverbTime=rt, nSamples=n)
 print(len(h))
+print(h)
