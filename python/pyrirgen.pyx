@@ -1,5 +1,5 @@
 cimport cdefs
-import collections
+import collections.abc
 
 def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=None, betaCoeffs=None, float soundVelocity=340, float fs=16000, orientation=[.0, .0], bint isHighPassFilter=True, int nDim=3, int nOrder=-1, int nSamples=-1, micType='o'):
 	""" Computes the response of an acoustic source to one or more microphones in a reverberant room using the image method [1,2].
