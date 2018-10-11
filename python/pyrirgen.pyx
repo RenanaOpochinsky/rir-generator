@@ -1,5 +1,6 @@
 cimport cdefs
-import collections.abc
+from collections import abc
+
 
 def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=None, betaCoeffs=None, float soundVelocity=340, float fs=16000, orientation=[.0, .0], bint isHighPassFilter=True, int nDim=3, int nOrder=-1, int nSamples=-1, micType='o'):
 	""" Computes the response of an acoustic source to one or more microphones in a reverberant room using the image method [1,2].
@@ -48,7 +49,7 @@ def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=N
 	if betaCoeffs is None:
 		betaCoeffs = [reverbTime]
 
-	if all(isinstance(e, collections.Iterable) for e in receiverPositions):
+	if all(isinstance(e, abc.Iterable) for e in receiverPositions):
 		multipleMics = True
 	else:
 		multipleMics = False
